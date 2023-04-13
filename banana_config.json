@@ -5,7 +5,7 @@
         "prompt": "Tell me a story about a cat"
     },
     "example_output": {
-        "base64_output": "Once upon a time.."
+        "output": "Once upon a time.."
     },
     "version": "1"
 }
