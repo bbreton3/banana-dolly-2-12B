@@ -1,0 +1,11 @@
+{
+    "name": "Dolly 2.0",
+    "category": "Natural Language",
+    "example_input": {
+        "prompt": "Tell me a story about a cat"
+    },
+    "example_output": {
+        "base64_output": "Once upon a time.."
+    },
+    "version": "1"
+}
