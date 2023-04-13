@@ -5,7 +5,7 @@
         "prompt": "Tell me a story about a cat"
     },
     "example_output": {
-        "output": "Once upon a time.."
+        "outputs": "Once upon a time.."
     },
     "version": "1"
 }
