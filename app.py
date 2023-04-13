@@ -52,12 +52,10 @@ def handler(context: dict, request: Request) -> Response:
         top_p=float(top_p),
         top_k=int(top_k),
     )
-    t_2 = time.time()
-
     # Run the model
     result = pipeline(prompt)
 
-    t_3 = time.time()
+    t_2 = time.time()
 
     return Response(
         json={
@@ -67,9 +65,7 @@ def handler(context: dict, request: Request) -> Response:
             "max_new_tokens": max_new_tokens,
             "top_p": top_p,
             "top_k": top_k,
-            "load_time": t_2 - t_1,
-            "generation_time": t_3 - t_2,
-            "inference_time": t_3 - t_1,
+            "inference_time": t_2 - t_1,
         },
         status=200,
     )
