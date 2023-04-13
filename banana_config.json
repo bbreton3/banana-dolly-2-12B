@@ -3,10 +3,10 @@
     "category": "Natural Language",
     "example_input": {
         "prompt": "Tell me a story about a cat"
-        "do_sample": true, # Optional
-        "max_new_tokens": 256, # Optional
-        "top_p": 0.92 # Optional
-        "top_k": 0 # Optional
+        "do_sample": true, //Optional
+        "max_new_tokens": 256, //Optional
+        "top_p": 0.92 //Optional
+        "top_k": 0 //Optional
     },
     "example_output": {
         "output": "Once upon a time.."
