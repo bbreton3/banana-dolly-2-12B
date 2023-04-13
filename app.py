@@ -4,6 +4,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from instruct_pipeline import InstructionTextGenerationPipeline
 
 import torch
+import time
 
 app = Potassium("my_app")
 
@@ -29,6 +30,10 @@ def init():
 # @app.handler is an http post handler running for every call
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
+    
+    # Start timer
+    t_1 = time.time()
+
     prompt = request.json.get("prompt")
 
     do_sample = request.json.get("do_sample", True)
@@ -45,11 +50,24 @@ def handler(context: dict, request: Request) -> Response:
         top_p=float(top_p), 
         top_k=int(top_k)
     )
+    t_2 = time.time()
 
     # Run the model
     result = pipeline(prompt)
 
-    return Response(json={"outputs": result}, status=200)
+    t_3 = time.time()
+
+    return Response(json={
+        "output": result,
+        "prompt": prompt,
+        "do_sample": do_sample,
+        "max_new_tokens", max_new_tokens,
+        "top_p": top_p,
+        "top_k": top_k,
+        "load_time": t_2 - t_1,
+        "generation_time": t_3 - t_2,
+        "inference_time": t_3 - t_1
+    }, status=200)
 
 
 if __name__ == "__main__":
