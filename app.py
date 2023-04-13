@@ -20,10 +20,8 @@ def init():
         torch_dtype=torch.bfloat16,
         device_map="auto",
     )
-    
-    pipeline = InstructionTextGenerationPipeline(model=model, tokenizer=tokenizer)
 
-    context = {"pipeline": pipeline}
+    context = {"model": model, "tokenizer": tokenizer}
 
     return context
 
@@ -32,7 +30,21 @@ def init():
 @app.handler()
 def handler(context: dict, request: Request) -> Response:
     prompt = request.json.get("prompt")
-    pipeline = context.get("pipeline")
+
+    do_sample = request.json.get("do_sample", True)
+    max_new_tokens = request.json.get("max_new_tokens", 256)
+    top_p = request.json.get("top_p", 0.92)
+    top_k = request.json.get("top_k", 0)
+
+    # Create pipeline with the following parameters
+    pipeline = InstructionTextGenerationPipeline(
+        model=model, 
+        tokenizer=tokenizer,
+        do_sample=do_sample, 
+        max_new_tokens=int(max_new_tokens), 
+        top_p=float(top_p), 
+        top_k=int(top_k)
+    )
 
     # Run the model
     result = pipeline(prompt)
