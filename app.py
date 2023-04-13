@@ -61,7 +61,7 @@ def handler(context: dict, request: Request) -> Response:
         "output": result,
         "prompt": prompt,
         "do_sample": do_sample,
-        "max_new_tokens", max_new_tokens,
+        "max_new_tokens": max_new_tokens,
         "top_p": top_p,
         "top_k": top_k,
         "load_time": t_2 - t_1,
