@@ -12,7 +12,7 @@
         "output": "Once upon a time..",
         "prompt": "Tell me a story about a cat",
         "do_sample": true,
-        "max_new_tokens", 256,
+        "max_new_tokens": 256,
         "top_p": 0.92,
         "top_k": 0,
         "load_time": 0.1,
