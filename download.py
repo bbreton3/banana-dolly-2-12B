@@ -10,7 +10,7 @@ import torch
 
 def download_model():
     # do a dry run of loading the huggingface model, which will download weights
-    MODEL_NAME = "databricks/dolly-v2-2-8b"
+    MODEL_NAME = "databricks/dolly-v2-12b"
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
     model = AutoModelForCausalLM.from_pretrained(
