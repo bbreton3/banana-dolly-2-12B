@@ -15,8 +15,6 @@
         "max_new_tokens": 256,
         "top_p": 0.92,
         "top_k": 0,
-        "load_time": 0.1,
-        "generation_time": 0.5,
         "inference_time": 0.6
     },
     "version": "2"
